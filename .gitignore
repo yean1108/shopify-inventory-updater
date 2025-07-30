@@ -1,0 +1,29 @@
+# Python 缓存
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# 环境文件
+.env
+.env.*
+
+# VSCode 配置
+.vscode/
+
+# Mac 系统文件
+.DS_Store
+
+# ChromeDriver 日志和缓存
+chromedriver.log
+*.log
+
+# Jupyter/IPython
+.ipynb_checkpoints/
+
+# 结果 CSV 文件（如未来添加）
+*.csv
+
+# 其他
+*.bak
+*.swp

@@ -1,0 +1,33 @@
+# .github/workflows/inventory_update.yml
+name: Update Inventory
+
+on:
+  workflow_dispatch:
+    inputs:
+      agline_cookie:
+        description: 'Paste your Agline Cookie string here'
+        required: true
+        type: string
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    env:
+      SHOPIFY_ACCESS_TOKEN: ${{ secrets.SHOPIFY_ACCESS_TOKEN }}
+      SHOPIFY_API_KEY: ${{ secrets.SHOPIFY_API_KEY }}
+      SHOPIFY_API_SECRET: ${{ secrets.SHOPIFY_API_SECRET }}
+      SHOPIFY_SHOP: ${{ secrets.SHOPIFY_SHOP }}
+      AGLINE_COOKIE: ${{ github.event.inputs.agline_cookie }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run inventory update script
+        run: python inventory_update.py
