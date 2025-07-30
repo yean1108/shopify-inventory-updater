@@ -217,7 +217,8 @@ def main():
 
         update_inventory(inventory_item_id, location_id, stock, sku)
 
-        product_url = search_agline_url(sku)
+        # product_url = search_agline_url(sku)
+        product_url = f"https://www.agline.com/product/{sku}"  # 用个假 URL 测试
         if product_url:
             weight, barcode = scrape_weight_barcode(product_url, sku)
             print(f"🎯 抓取结果 → SKU {sku} → weight: {weight} / barcode: {barcode}")
